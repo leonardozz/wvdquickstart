@@ -118,7 +118,7 @@ Catch {
 #region connect to Azure and check if admin on Azure AD 
 Try {
 	# this depends on the previous segment completeing 
-	$role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq 'Company Administrator'}
+	$role = Get-AzureADDirectoryRole | Where-Object {$_.roleTemplateId -eq '62e90394-69f5-4237-9190-012177145e10'}
 	$isMember = Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser | Where-Object {$_.UserPrincipalName -eq $AADUsername}
 	
 	if ($isMember.UserType -eq "Member") {
